@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+cd site
+bundle exec jekyll serve
