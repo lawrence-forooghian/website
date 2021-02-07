@@ -1,0 +1,3 @@
+[build]
+publish = "site/_site"
+command = "cd site && bundle exec jekyll build"
