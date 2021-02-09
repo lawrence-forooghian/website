@@ -8,3 +8,12 @@ defaults:
       type: "pages"
     values:
       layout: default
+
+  - scope:
+      path: notes
+      type: posts
+    values:
+      layout: default
+      # No date for notes. I anticipate a note being something that evolves
+      # over time.
+      permalink: /:categories/:title

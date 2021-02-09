@@ -20,6 +20,10 @@ You can see some of my recent work by browsing [my contributions on GitHub](http
 
 You can email me at [hello@forooghian.com](mailto:hello@forooghian.com).
 
+## Notes
+
+Sometimes I write [notes]({% link notes/index.md %}).
+
 ## Other places I exist on the web
 
 - [GitHub](https://github.com/lawrence-forooghian)
