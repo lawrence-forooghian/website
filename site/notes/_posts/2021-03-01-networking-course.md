@@ -398,4 +398,105 @@ TCP sockets can exist in lots of states, and understanding them will help troubl
 
 These states are OS-specific, lie outside of the TCP spec
 
-2:13:04
+#### Connection-oriented and connectionless protocols
+
+TCP is _connection-oriented_: establishes a connection, and uses this to check all data has been properly transmitted
+
+Even minor crosstalk from another twisted pair in same cable can make a CRC fail - this causes a whole frame to be discarded
+
+Congestion might cause a router to drop traffic in favour of a higher priority one, or construction company might cut a cable between ISPs
+
+IP and Ethernet use checksums, but they don't re-send data that doesn't pass the check, it just gets discarded
+
+TCP sends all segments in sequential order, but they might not arrive in that order - this is why sequence numbers important
+
+TCP has overhead (set up, tear down, acknowledge), only necessary if you really care about the data getting there
+
+UDP - you just set destination port and send packet. For example, streaming video. Imagine each UDP datagram is a single frame of a video. Doesn't really matter if a few get lost along the way
+
+#### Firewall
+
+A device that blocks traffic that meets certain criteria.
+
+Can operate at:
+
+- application layer
+- blocking ranges of IP addresses
+- most commonly used at transport layer - a configuration that allows them to block traffic to certain ports while allowing it to other ports
+
+Small business network, with a server that serves company website, and also private file server. So firewill would only allow traffic to port 80.
+
+Sometimes independent network devices. But best to think of them as a program that can run anywhere. For home users, the router and firewall are usually same device.
+
+### Application layer
+
+Too many protocols to dive into here. Let's briefly talk HTTP.
+
+All web browsers and servers need to speak same protocol (HTTP).
+
+#### The application layer and the OSI model
+
+Open Systems Interconnection - the most rigorously defined, often used in academic settings / certification orgs
+
+Introduces 2 layers between transport and application:
+
+- session layer: facilitating the application between actual applications and the transport layer
+- presentation layer: making sure that the unencapsulated application layer data is able to make sure the data can be understood by the application - e.g. encryption, compression
+
+There's no additional encapsulation going on here, which is why we usually focus on the 5-layer model here
+
+### All the layers working in unison
+
+- by looking at the destination IP, computer 1 knows it's sending to something not on the network, and hence needs to send to the gateway's MAC address
+- IP of gateway is configured in computer 1
+- ARP to find MAC address of gateway (router A) given an IP (broadcast on FF:FF:FF:FF)
+- switch gets the Ethernet frame from computer 1 to router A
+- each router has two network interfaces
+
+The whole thing here is just desribing getting a single TCP segment with a SYN flag from computer 1 to computer 2
+
+(This is very cool.)
+
+## Networking services
+
+DNS, DHCP, NAT, VPN, proxies
+
+### DNS
+
+IP address is a 32-bit binary number, MAC address 48-bit binary number. Humans are better at remembering words. Furthermore, you'd have to remember changing IP addresses
+
+Domain names might resolve to different things depending on where in the world you are
+
+DNS servers need to be specifically configured at a node in a network
+
+Alongside IP address, subnet mask, gateway – DNS server is the final piece of standard modern network configuration that needs to be put into a host
+
+There are 5 primary types of DNS server, and a given server can fulfil many of these roles at once
+
+1. caching name servers
+2. recursive name servers - these first 2 usually provided by ISP or local network; their purpose is to store known domain name lookups for a certain amount of time. Recursive means they perform fully recursive DNS resolution requests (?)
+3. root name servers
+4. TLD name servers
+5. authoritative name servers
+
+All domain names in global DNS system have a TTL (in seconds), how long a name server is allowed to cache an entry before it should discard it and perform a full resolution again. In the past, these used to be huge, e.g. ~ 1 day, due to limited bandwidth. These days, they've dropped to ~few mins to ~few hours.
+
+So, what does a full recursive resolution look like?
+
+1. Contact root name server - there's 13 of those. Previously in a specific location, but now distributed around the globe using _anycast_ - routes traffic to different destinations depending on traffic, location etc. A router can send a datagram to a specific IP but see it routed to one of many different destinations. (Q: so why do we need geo-based DNS if we have anycast?) Responds with the TLD name server that should be queried
+2. TLD name server: e.g. www.facebook.com - the .com portion should be thought of as the TLD. Each TLD has a name server (but again, doesn't mean there's just one physical name server). Responds with the authoritative name server
+3. Authoritative server: provides the actual IP of the server in question
+
+Each computer also usually has its own temporary DNS cache too.
+
+### DNS and UDP
+
+A single DNS request and response can usually fit in a single UDP datagram.
+
+DNS listens on port 53
+
+With TCP, a full DNS lookup would take the exchange of 44 packets. Whereas it'd be 8 UDP datagrams.
+
+How does error recovery work? DNS resolver asks again if it doesn't get a response, which is the same functionality that TCP provides at the transport layer. DNS over TCP also exists and is frequently used, especially since single DNS req/res no longer expects in a single UDP datagram. In that case, the DNS server responds saying the record is too large, and that the requester needs to open a TCP connection
+
+2:57:36
