@@ -22,7 +22,7 @@ You can email me at [hello@forooghian.com](mailto:hello@forooghian.com).
 
 ## Notes
 
-Sometimes I write [notes]({% link notes/index.md %}).
+Sometimes I write [notes]({% link notes/index.md %}). I haven’t put much online yet, though.
 
 ## Other places I exist on the web
 
