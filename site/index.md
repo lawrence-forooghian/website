@@ -28,4 +28,4 @@ Sometimes I write [notes]({% link notes/index.md %}). I haven’t put much onlin
 
 - [GitHub](https://github.com/lawrence-forooghian)
 - [LinkedIn](https://www.linkedin.com/in/lawrence-forooghian)
-- [Twitter](https://twitter.com/forooghiana)
+- [Twitter](https://twitter.com/ljforooghian)
