@@ -5,7 +5,7 @@
 
 ## Who I am
 
-I work as a software developer at [dxw](https://www.dxw.com) in London, United Kingdom.
+I work as a software developer in São Paulo, Brazil.
 
 Here’s my [CV]({% link CV-lawrence_forooghian-redacted.pdf %}). I’ll make an HTML version soon.
 
