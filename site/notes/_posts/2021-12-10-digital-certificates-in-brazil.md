@@ -25,7 +25,7 @@ The certificates come in different levels (A1, A3, …), with different validity
 
 ## How to get one?
 
-[Pick a CA and go through the application process](https://www.gov.br/iti/pt-br/assuntos/certificado-digital/como-obter). You’ll probably need to go a real-life place with (Brazilian) government-issued ID to prove your identity. They’ll also take fingerprints and a photo (for reasons I don’t yet understand). I did mine through Prodesp and was able to book an appointment for the next day in a [Poupatempo](https://www.poupatempo.sp.gov.br) office. (Poupatempo being, I think, a state-run place to go and do various bureacracy things — I went to the one in Lapa and found it to be a surprisingly pleasant place to spend time, it's colourful and bright and airy.)
+[Pick a CA and go through the application process](https://www.gov.br/iti/pt-br/assuntos/certificado-digital/como-obter). You’ll probably need to go a real-life place with (Brazilian) government-issued ID to prove your identity. They’ll also take fingerprints and a photo (for reasons I don’t yet understand). I did mine through Prodesp and was able to book an appointment for the next day in a [Poupatempo](https://www.poupatempo.sp.gov.br) office. (Poupatempo being, I think, a state-run place to go and do various bureaucracy things — I went to the one in Lapa and found it to be a surprisingly pleasant place to spend time, it's colourful and bright and airy.)
 
 ### Generating a certificate from Prodesp on macOS
 
