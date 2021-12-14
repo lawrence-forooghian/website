@@ -31,3 +31,9 @@ title: Government and civic tech in Brazil
   - Some vocab: [Concurso: como se diz “concurso público” em inglês?](https://www.teclasap.com.br/concurso/)
   - Systems analyst questions - [Simulados e questões cargo de analista de sistemas Concursos no Brasil](https://www.concursosnobrasil.com.br/questoes/analista-de-sistemas/)
 - My [Brazil tech](https://twitter.com/i/lists/1350072432397316097) Twitter list
+- [WeGov](https://twitter.com/wegov) "Somos um Espaço de Aprendizado e Inovação no Setor Público"
+- [DECRETO Nº 10.332, DE 28 DE ABRIL DE 2020](https://www.in.gov.br/en/web/dou/-/decreto-n-10.332-de-28-de-abril-de-2020-254430358) "Institui a Estratégia de Governo Digital para o período de 2020 a 2022"
+- [Gov.br coloca o Brasil entre as 10 nações líderes em Governo Digital](https://www.serpro.gov.br/menu/noticias/noticias-2021/gov-br-coloca-o-brasil-entre-as-10-nacoes-lideres-em-governo-digital)
+- [Lei do Governo Digital agora vale para municípios](https://www.ipm.com.br/noticias/governo-digital/lei-do-governo-digital-agora-vale-para-municipios-tecnologia-ipm-esta-preparada/)
+- [News about Governo Digital on EBC](https://agenciabrasil.ebc.com.br/tags/governo-digital)
+- https://oasislab.com.br/brasil-atraso-governo-digital/
