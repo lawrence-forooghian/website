@@ -3,6 +3,8 @@
 
 # Lawrence Forooghian
 
+TODO pronouns
+
 ## Who I am
 
 I work as a software developer in São Paulo, Brazil.
