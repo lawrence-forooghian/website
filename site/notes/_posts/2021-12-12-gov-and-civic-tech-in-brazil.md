@@ -37,3 +37,12 @@ title: Government and civic tech in Brazil
 - [Lei do Governo Digital agora vale para municípios](https://www.ipm.com.br/noticias/governo-digital/lei-do-governo-digital-agora-vale-para-municipios-tecnologia-ipm-esta-preparada/)
 - [News about Governo Digital on EBC](https://agenciabrasil.ebc.com.br/tags/governo-digital)
 - https://oasislab.com.br/brasil-atraso-governo-digital/
+- [Something about working in federal government](https://www.gov.br/servidor/pt-br/assuntos/noticias/2022/marco/sougov-br-ja-tem-mais-de-200-mil-curriculos-cadastrados)
+- [GovTech Brasil conference (2018)](https://govtechbrasil.org.br/) - has all of the session videos
+- Wikipedia list of [empresas estatais de tecnologia da informação no Brasil](https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Empresas_estatais_de_tecnologia_da_informa%C3%A7%C3%A3o_no_Brasil) has quite a few interesting things (e.g. Serpro, but also São Paulo’s PRODAM/SP)
+- See my information about [digital certificates in Brazil]({% link notes/_posts/2021-12-10-digital-certificates-in-brazil.md %}) and the involved bodies.
+- [Software Público](https://www.gov.br/governodigital/pt-br/software-publico)
+
+  > O Software Público Brasileiro é um tipo específico de software livre que atende às necessidades de modernização da administração pública (…) O que rege o Software Público Brasileiro atualmente é a Portaria N° 46 de 28 de setembro de 2016, que dispõe sobre os procedimentos para o desenvolvimento, a disponibilização e o uso do Software Público Brasileiro.
+
+- [BrazilLAB](https://brazillab.org.br/): O BrazilLAB é um hub de inovação que acelera soluções e conecta empreendedores com o Poder Público
