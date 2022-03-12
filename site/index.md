@@ -1,9 +1,10 @@
 ---
 ---
 
-# Lawrence Forooghian
-
-TODO pronouns
+<h1>
+Lawrence Forooghian
+<span class="pronouns">(he/him)</span>
+</h1>
 
 ## Who I am
 
