@@ -4,10 +4,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="The personal website of Lawrence Forooghian, a software developer in São Paulo, Brazil."
-    />
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
+    {% endif %}
     <title>
       {% if page.title.size > 0 %} {{ page.title }} - {{ site.title }} {% else
       %} {{ site.title }} {% endif %}

@@ -1,4 +1,5 @@
 ---
+description: The personal website of Lawrence Forooghian, a software developer in São Paulo, Brazil.
 ---
 
 <h1>
