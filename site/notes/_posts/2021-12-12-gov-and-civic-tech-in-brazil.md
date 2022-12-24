@@ -1,5 +1,6 @@
 ---
 title: Government and civic tech in Brazil
+noindex: true
 ---
 
 # Government and civic tech in Brazil

@@ -1,5 +1,6 @@
 ---
 title: Digital certificates in Brazil
+noindex: true
 ---
 
 # Digital certificates in Brazil
@@ -42,3 +43,9 @@ I need to look in more detail. Looks like an X.509 cert. The Common Name is in t
 ## Digital signatures from GOV.BR
 
 There seems to be another type of digital signature (see [Assinatura Eletrônica do gov.br](https://www.gov.br/governodigital/pt-br/assinatura-eletronica)), which allows you to sign documents using your gov.br identity. According to the linked page, these are also legally valid. I tried downloading my cert from them, and it appears they use their own root certs, separate from those of ICP-Brasil. One to investigate more. It seems to me that the simplest way to elevate your gov.br account to a level that allows you to sign documents is to authenticate the account using an ICP-Brasil-issued cert, which to me seems to somewhat defeat the point, but I’m probably missing something.
+
+## How to sign a document?
+
+- https://www.serpro.gov.br/links-fixos-superiores/assinador-digital/assinador-serpro
+  - https://formulae.brew.sh/cask/assinador-serpro#default
+- https://www.portaldeassinaturas.com.br/

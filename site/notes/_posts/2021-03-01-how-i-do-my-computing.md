@@ -1,5 +1,6 @@
 ---
 title: How I do my computing
+noindex: true
 ---
 
 # How I do my computing

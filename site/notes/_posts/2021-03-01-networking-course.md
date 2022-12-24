@@ -1,5 +1,6 @@
 ---
 title: The Bits and Bytes of Computer Networking course notes
+noindex: true
 ---
 
 # The Bits and Bytes of Computer Networking

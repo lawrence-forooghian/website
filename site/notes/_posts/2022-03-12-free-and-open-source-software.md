@@ -1,5 +1,6 @@
 ---
 title: Free and open-source software
+noindex: true
 ---
 
 # Free and open-source software
