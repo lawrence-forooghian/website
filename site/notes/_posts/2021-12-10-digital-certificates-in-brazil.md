@@ -36,6 +36,18 @@ I used one of [Microsoft’s free Windows virtual machines](https://developer.mi
 
 At the end of the certificate generation process, SafeSign asks if you want to export the certificate and private key as a p12 file. You can then export this from the virtual machine (using Shared Folders in VirtualBox, for example) and import it using Keychain Utility on the Mac. You can then throw the virtual machine away.
 
+### Renewing a certificate from Prodesp
+
+My certificate expired after a year and I needed a new one. Prodesp offers renewal for less than the price of a new certificate.
+
+The important thing to note is that **you have to do the whole renewal process before the original certificate expires**.
+
+You need to have the original certificate still installed on your machine (which meant getting into into a Windows VM). To view installed certificates in Windows, run `certmgr.msc`.
+
+Since writing the last set of instructions, I’ve got an Apple Silicon Mac — for which VirtualBox is not available – and have switched to using VMWare Fusion. It’s quite basic, no drag and drop etc. For transferring files to and from the VM, I followed [these instructions](https://winscp.net/eng/docs/guide_windows_openssh_server) to set up an SCP server (need to run `net start sshd` in an admin PowerShell console to start the service, since I couldn’t find the GUI it talks about). Then connect to it using the VM’s IP, which you get from `ipconfig`.
+
+Then I was able to connect to it with Cyberduck over SFTP.
+
 ## What does the cert look like?
 
 I need to look in more detail. Looks like an X.509 cert. The Common Name is in the format "[my name]:[my [CPF number](https://en.wikipedia.org/wiki/CPF_number)]". On first glance, doesn’t seem to contain any additional information about me.
