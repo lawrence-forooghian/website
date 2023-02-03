@@ -12,8 +12,6 @@ These are intended just as notes to myself. But I'm hoping that making them publ
 - maybe be a handy thing to send someone a link to once in a while when I need to explain something
 - give me a starting point when people ask me what I’ve been doing / thinking about recently, which I am terrible at answering
 
-Over time I'll transfer some notes from the depths of my file system to here.
-
 ## Contents
 
 {% assign has_posts = false %}
