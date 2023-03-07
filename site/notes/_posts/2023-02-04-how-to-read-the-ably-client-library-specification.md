@@ -177,6 +177,9 @@ Can 1-3 each be broken and re-created transparently? TCP connection definitely.
 1. TCP connection
 2. Transport
 3. Connection
+
+   What about `Auth`, where does that fit in?
+
 4. Channel
 
    Not sure if this counts as another layer in terms of transport.
@@ -214,6 +217,7 @@ Let's scan through the `Connection` and see roughly what kind of things it does 
 - trying callback hosts if necessary when connecting (RTN17)
 - re-sending `ProtocolMessage` awaiting acknowledgement when transport disconnected
 - re-sending `ATTACH` or `DETACH` for channel in `ATTACHING` or `DETACHING` state when transport disconnected
+- checking the Ably connection is still alive (heartbeat, RTN23)
 - handling a `CONNECTED` message received from Ably at any time (why? does this mess with our understanding of what a connection is?) – RTN24
 
 TODO when can the connection’s ID change? This is what I wanted to know to flesh out "a connection might actually be multiple connections"
@@ -225,6 +229,8 @@ TODO when can the connection’s ID change? This is what I wanted to know to fle
 ## The transport
 
 - RTN12c says it is something that can be "abruptly closed"
+- it may be capable of showing that it is still alive (e.g. ping/pong RTN23b)
+- is decoding considered part of the transport? e.g. MessagePack
 
 ## Thoughts on implementation
 
@@ -232,3 +238,8 @@ TODO when can the connection’s ID change? This is what I wanted to know to fle
 - Lots of good information being saved when one class asks another class to do something. E.g. when the channel asks the connection to do something, it should get a receipt so that the operations can be correlated. Not sure how this would play with the Swift async stuff.
 - The stuff where the channel checks the connection’s state before making a decision about how to proceed – this seems like it could be fraught with synchronisation issues. See what RTL6c2 says about this. It’s also a bit confusing because the channel state is dependent on the connection state
 - In general, how to implement the operations that are dependent on the current state even of the receiver (e.g. RTL7c which says that subscribe should attach if the channel is `INITIALIZED`)
+- I don't know whether it's okay to dump everything into a serial queue to be dealt with at some point. Surely some things should pre-empt others, e.g. the transport dies, you need to act on this immediately.
+
+## Interactions between the components
+
+Maybe next I’ll document all the places where the feature spec mentions the interaction points between the components.
