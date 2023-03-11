@@ -31,4 +31,4 @@ Some [notes]({% link notes/index.md %}) about various things.
 ## Other places I exist on the web
 
 - [GitHub](https://github.com/lawrence-forooghian)
-- [LinkedIn](https://www.linkedin.com/in/lawrence-forooghian)
+- [LinkedIn](https://www.linkedin.com/in/lawrence-forooghian) — I rarely check it, so it’s better to email me
