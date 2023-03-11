@@ -15,7 +15,8 @@ These are intended just as notes to myself. But I'm hoping that making them publ
 ## Contents
 
 {% assign has_posts = false %}
-{% for post in site.posts %}
+{% assign sorted_posts = site.posts | sort_natural: "title" %}
+{% for post in sorted_posts %}
 {% if post.categories contains 'notes' %}
 {% assign has_posts = true %}
 
