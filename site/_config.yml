@@ -3,6 +3,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 title: "Lawrence Forooghian" # the name of your site, e.g. ACME Corp.
 plugins:
   - jekyll-sitemap
+  - jekyll-toc
 
 defaults:
   - scope:

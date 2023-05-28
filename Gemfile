@@ -10,3 +10,4 @@ gem "jekyll", "~> 4.2"
 gem "webrick"
 
 gem "jekyll-sitemap", "~> 1.4"
+gem "jekyll-toc", "~> 0.18.0"
