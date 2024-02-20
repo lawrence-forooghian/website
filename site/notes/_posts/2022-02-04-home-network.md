@@ -929,3 +929,53 @@ So data is transferring at about half the theoretical max. I wonder where the bo
 But weirdly, fast.com tells me that my Internet speed is 830Mbps, which is faster than the internal speed, eh?
 
 I wonder what I'd get if I used the USB LAN adapter on my computer.
+
+## New config of home network (2023-06-17)
+
+This is in response to having to take the TP-Link box out of the equation, due to:
+
+> e.g. curl -vvv https://gamefaqs.gamespot.com/boards/718564-metal-gear-solid-v-the-phantom-pain/73084364 is both locally and on Optiplex giving “Connection reset by peer” on Optiplex. gateway 192.168.1.1 (run `route`), what is that? is it the wireless router?. TCP RST packet? Try opening a TLS connection to GameFAQs with ` openssl s_client -connect 199.232.208.194:443` and notice that it normally prints out very little and sometimes prints a load more. does not happen when using my hotspot. let’s turn back to connecting straight to modem and see what happens over ethernet. It seems to not happen, or happen very seldom. which is weird. Have reset modem to factory settings, probably for no good reason. then reset the access point to factory settings. Hmm, and now it’s happening again. Hmm, it seems to only be happening over (Wi-Fi + TP-Link) — that is (LAN + TP-Link) seems to work. No, but wait — that can’t be right, it was happening on OptiPlex too — yeah, and the curl command is failing over LAN with TP-Link too. OK, have just taken the TP-Link box away, and lovelyhorse is on the Claro box now. Hmm, I can’t find anything that looks like DHCP server settings. Well, Plex and OptiPlex and torrents are all inaccessible now.
+
+So, what can I do without buying any new equipment?
+
+- Have Claro box serve as modem, gateway, Ethernet switch, and wireless access point
+  - No idea what we can expect speed-wise
+- Have Optiplex now also serve as DHCP server
+  - If I do that, and disable the DHCP server on the Claro box, then what IP will the Claro box use? Will it self-assign 192.168.0.1 or will it use DHCP?
+
+OK, let's first of all [configure OptiPlex to have a static IP](https://sites.cns.utexas.edu/oit-blog/blog/how-set-static-ip-linux-machine) (192.168.0.22):
+
+1. `hostnamectl set-hostname optiplex.internal.forooghian.com`
+2. `echo "192.168.0.22 optiplex.internal.forooghian.com" >> /etc/hosts`
+3. TODO their instructions aren't very clear, take a look at my book
+   - https://wiki.debian.org/NetworkConfiguration#Configuring_the_interface_manually
+   ```
+   auto enp2s0
+   iface enp2s0 inet static
+    address 192.168.0.22/24
+    gateway 192.168.0.1
+   ```
+   (`/etc/network/interfaces`)
+   Oops, did `ip link set enp2s0 down` (with the intention of following it by `up`) but then that dropped my SSH and I had to power cycle the machine
+   well, after plugging in to TV and `ip link set enp2s0 up` the interface didn't seem to get an IPv4 address
+   After reboot of machine it comes back
+
+## Setting up DHCP server
+
+If multiple `DHCPOFFER` received, then it's [usually first one wins](https://superuser.com/questions/1370188/how-do-dhcp-clients-know-which-of-multiple-dhcpoffers-to-accept).
+
+So, I'm curious — if we don't set up a DHCP server, and just statically assign OptiPlex an IP, what will happen? I _think_ that the router’s DHCP server [should use an ARP probe](https://networkengineering.stackexchange.com/questions/60272/arp-after-dhcp-discover) to check whether the address is available before assigning 192.168.0.22 to anyone else.
+
+TODO
+
+## Home Internet speed
+
+It seems to have gone down recently. Speedtest.net’s CLI is showing me around 112.55 Mbps (independent of local connection type, and on both OptiPlex and MacBook Pro.
+
+Weirdly their website suddenly now shows higher numbers (around 380). Eh? Ditto for their app on iPhone.
+
+For example, [here](https://www.speedtest.net/result/14903690625) is a browser one, and [here](https://www.speedtest.net/result/c/f05154d3-0b2d-46da-a0a9-69b7abda21f2) is a command-line one, both taken on MBP over Ethernet. Hmm, well, now they're both really high again!
+
+We're paying for a 500 Mbit connection.
+
+Claro has a diagnostic tool in the account portal.
