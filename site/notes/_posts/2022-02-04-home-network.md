@@ -979,3 +979,78 @@ For example, [here](https://www.speedtest.net/result/14903690625) is a browser o
 We're paying for a 500 Mbit connection.
 
 Claro has a diagnostic tool in the account portal.
+
+## Setting up Jellyfin
+
+I don’t want to have to pay Plex Pass to get downloads. I’m sure that this’ll be clunkier, though (I have no idea how downloads work).
+
+Following [these instructions](https://jellyfin.org/docs/general/installation/linux#debuntu-debian-ubuntu-and-derivatives-using-apt).
+
+Remember the server is currently at 192.168.0.1.
+
+After running that script, I get:
+
+```
+> Waiting 15 seconds for Jellyfin to fully start up.
+
+-------------------------------------------------------------------------------
+● jellyfin.service - Jellyfin Media Server
+     Loaded: loaded (/lib/systemd/system/jellyfin.service; enabled; vendor preset: enabled)
+    Drop-In: /etc/systemd/system/jellyfin.service.d
+             └─jellyfin.service.conf
+     Active: active (running) since Wed 2024-02-28 21:32:29 -03; 20s ago
+   Main PID: 42843 (jellyfin)
+      Tasks: 25 (limit: 4246)
+     Memory: 96.7M
+        CPU: 3.912s
+     CGroup: /system.slice/jellyfin.service
+             └─42843 /usr/bin/jellyfin --webdir=/usr/share/jellyfin/web --restartpath=/usr/lib/jellyfin/restart.sh --ffmpeg=/usr/lib/jellyfin-ffmpeg/…
+
+fev 28 21:32:32 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:32] [INF] ServerId: 48932916fd9440f7baebf229bbceaeff
+fev 28 21:32:32 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:32] [INF] Executed all pre-startup entry points in 0:00:00.0855854
+fev 28 21:32:32 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:32] [INF] Core startup complete
+fev 28 21:32:32 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:32] [INF] Executed all post-startup entry points in 0:00:00.1346874
+fev 28 21:32:32 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:32] [INF] Startup complete 0:00:02.9088764
+fev 28 21:32:34 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:34] [INF] StartupTrigger fired for task: Update Plugins
+fev 28 21:32:34 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:34] [INF] Queuing task PluginUpdateTask
+fev 28 21:32:34 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:34] [INF] Executing Update Plugins
+fev 28 21:32:36 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:36] [INF] Update Plugins Completed after 0 minute(s) and 1 seconds
+fev 28 21:32:36 optiplex.internal.forooghian.com jellyfin[42843]: [21:32:36] [INF] ExecuteQueuedTasks
+-------------------------------------------------------------------------------
+
+You should see the service as 'active (running)' above. If not, use https://jellyfin.org/contact to find us for troubleshooting.
+
+You can access your new instance now at http://:8096 in your web browser to finish setting up Jellyfin.
+
+Thank you for installing Jellyfin, and happy watching!
+```
+
+So to finish setup now I go to http://192.168.0.22:8096/ and follow the wizard.
+
+Let's set up a user account (details in 1Password).
+
+Does this support https too?
+
+Hmm, Plex doesn't seem to be able to access that folder. What's going on there?
+
+Perhaps it’s a case of getting Jellyfin’s user into that `media-library-editors` group.
+
+There’s a user called `jellyfin`.
+
+```
+sudo adduser jellyfin media-library-editors
+```
+
+Well, that doesn't seem to have worked; it still can't find `/mnt/storage/Plex/Movies`.
+
+Oh, is it a case of restarting jellyfin? Yep, that worked
+
+Sounds like Infuse is the client of choice for iOS / Mac (there's also the web interface).
+
+OK, seems to be roughly working. Looks like I can use the same directory for Plex and Jellyfin and run them side by side for now, cool.
+
+I think there’s a fair bit of Jellyfin understanding to get, though.
+
+Also, how to make Jellyfin work over HTTPS?
+
+(I told Jellyfin that it was allowed to poke my router to do some UPnP something for remote access.)
